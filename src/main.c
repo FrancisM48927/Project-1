@@ -74,7 +74,7 @@ int main(void)
         }
         else if (!(GPIOC->IDR & (0x1 << USER_BTN)) && BTN_LOCK) 
         { // Debounce check if button is not active lock is on
-            Delay_Count(333333);
+            Delay_Count(367676);
             BTN_LOCK = false;
         }
     }
