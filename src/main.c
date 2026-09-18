@@ -10,6 +10,7 @@
 #define BLUE_LED 7
 #define RED_LED 14
 #define USER_BTN 13
+
 bool BTN_LOCK = false;
 unsigned int LED_STATUS = 0;
 
@@ -39,6 +40,7 @@ int main(void)
     // Clear PC13 w/ same method as before (also sets it to input)
     GPIOC->MODER &= ~(0x3 << (USER_BTN * 2));
 
+    // Initialize all colors
     GPIOB->BSRR = (0x1 << (GREEN_LED + 16)); // Green off
     GPIOB->BSRR = (0x1 << (BLUE_LED + 16)); // Blue off
     GPIOB->BSRR = (0x1 << (RED_LED)); // Red on
@@ -74,7 +76,7 @@ int main(void)
         }
         else if (!(GPIOC->IDR & (0x1 << USER_BTN)) && BTN_LOCK) 
         { // Debounce check if button is not active lock is on
-            Delay_Count(267670);
+            Delay_Count(267267);
             BTN_LOCK = false;
         }
     }
